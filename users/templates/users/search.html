@@ -1,0 +1,74 @@
+{% extends "roommate_app/base.html" %}
+
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% for each_profile in all_profiles %}    
+
+
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ each_profile.with_profile.image.url }}">
+        <div class="media-body">
+
+        <div style="background-color:#bf7308;">
+          <h2 class="account-heading" style="color:white;">&ensp;{{ each_profile.with_profile.name }}</h2>
+          <!-- <p style="color:white;">&ensp;&ensp;&ensp;{{ each_profile.with_profile.email }}</p> -->
+
+          <h4 style="color:white;"> &ensp;&ensp;{{ each_profile.similarity_tokens }}% Compatibility</h5>
+          <hr>
+        </div>
+
+          
+          <h5> {{ each_profile.with_profile.bio }}</h5>
+          <h5> Graduation Year: {{ each_profile.with_profile.graduation_year }}</h5>
+          <h5> Gender: {{ each_profile.with_profile.gender }}</h5>
+          <h5> Noise Level: {{ each_profile.with_profile.noise_level }}</h5>
+          <h5> Budget: ${{ each_profile.with_profile.budget }}</h5>
+          <h5> Location: {{ each_profile.with_profile.location }}</h5>
+          <h5> {{ each_profile.with_profile.my_car_status }}</h5>
+          <a href="/send_roommate_request/{{each_profile.with_profile.user.id}}/" class="btn btn-outline-dark btn-lg " role="button" aria-pressed="true">Send Friend Request</a>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    
+    
+
+<!-- <div class="pagination">
+        <span class="step-links">
+          <div>
+            {% if all_profiles.has_previous %}
+                <a href="?page={{ all_profiles.previous_page_number }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Previous</a>
+
+            {% else %}
+                <a href="" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Previous</a>
+            {% endif %}
+
+
+            <a href="/send_roommate_request/{{each_profile.with_profile.user.id}}/" class="btn btn-outline-light btn-lg " role="button" aria-pressed="true">Send Friend Request</a>
+            
+            {% if all_profiles.has_next %}
+                <a href="?page={{ all_profiles.next_page_number }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Next</a>
+            {% else %}
+                <a href="" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Next</a>
+            {% endif %}
+
+          </div>
+         
+        </span>
+      </div>
+
+  <br> 
+    -->
+
+{% endfor %}
+
+{% endblock content %}
+

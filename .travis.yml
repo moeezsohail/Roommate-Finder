@@ -1,0 +1,15 @@
+language: python
+python:
+- '3.8'
+install:
+- pip install -r requirements-travis.txt
+script:
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: XSQXxqWDE0e+UC3vW6U9XPzVd03BXgBGyw7mFLj446MdLl8N4nhXAMnPoNznQCLzFmA6F/Y3njzWo7G6P/7TxG3oTFJGqOeZi5ISMSaPp4roFywNxFv81LNIL7vLyWyaQmejS7BAXIcqHTRV7gSoc+BGkD++deYRxSKARD8fgDG5uvEiS1owcuV4L9vRSO0BeTasyRGeIxAAbknjmvsrJkP/NQZejicxYhJkNMtNjaHXzfXDypA7Jju1EDXUkVGVGuC/3MiP+Ie/WhK2B6FuOA3HfxPXlw+dD0HALl/hWv03zJKDeIqzfh4rzZ5NDS9Sru2Sn49yWLUN86dPzWgSy5CHIwsfoAqCHkCXxhBHVSPRKarTYMbCuCL9Ndl8cRfTVqF6Ik/YamlwPnFxBAosPQ3tNj2plFkiHhNTJCtICr7LtvbDcvVZVV26TvO0rzquNsbl6VnF3D6bk4hIncvLKuSbLwmLMzzygN7LaHth+yfgoM9vyS0sqS95C62fU4JKCIMNTaEFPXhQ41VAyu7rLiYdA3XYuFoEzkPmEPRs3Q40qlwX4JQXDRlS0t4Dv8Ahk/vrsvdpY3a3ACrwbU6cXehKXZPmyqJ3joGzIBQaJBCm+PLiIKb2+movJuAAfMo9hIC11Zx+5XoV3dJqsF2IZiOBzMdvy/zXYDWLXu0fUIU=
+  app: django-3240-a-19
+  on:
+    repo: uva-cs3240-s21/project-a-19
+    branch: main

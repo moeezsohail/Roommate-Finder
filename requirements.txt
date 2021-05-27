@@ -1,0 +1,13 @@
+Django
+gunicorn
+django-heroku
+django-bootstrap4
+psycopg2-binary
+dj-database-url
+django-allauth
+whitenoise
+django-crispy-forms
+Pillow
+django-storages
+boto3
+GroupyAPI

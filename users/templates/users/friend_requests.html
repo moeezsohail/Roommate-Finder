@@ -1,0 +1,34 @@
+{% extends "roommate_app/base.html" %}
+
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% if user.is_authenticated %}
+
+{% block content %}
+
+	{% if not all_friend_requests %}
+
+    <h4 style="color:white">You have no new friend requests.</h4>
+
+    {% else %}
+    
+    {% for each_friend_request in all_friend_requests %}
+
+      <div style="background-color:#183a5c; text-align: center; padding-top: 1%; padding-bottom: 1%;">
+        <h5 style="color:white">{{each_friend_request.from_profile.name}}</h5>
+        <form action="/accept_roommate_request/{{each_friend_request.id}}/">
+            <div class="form-group">
+              <button class="btn btn-outline-light btn-lg " type="submit">Accept Friend Request</button>
+            </div>
+        </form>
+    </div>
+    <br>
+
+    {% endfor %}
+
+    {% endif %}
+
+
+{% endblock content %}
+
+{% endif %}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="db" uuid="0091efbe-7e92-48a6-ba4b-bd7dc7727876">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\qhelf\OneDrive\Documents\CS3240\Project\project-a-19\db.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>

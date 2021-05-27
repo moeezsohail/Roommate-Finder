@@ -1,0 +1,55 @@
+{% extends "roommate_app/base.html" %}
+{% load socialaccount %}
+
+
+{% block content %}
+
+{% if user.profile.chat_token %}
+    <h4 style="color:white;"> You can chat!</h5>
+    
+    {% if chat_error %}
+        <h5>Invalid User.</h5>
+    {% else %}
+        {% if other_id %}
+        <div class="chat">
+            {% for message in chat %}
+                {% if message.userSent %}
+                    <div class="user messages">
+                        <div class="message">
+                            {{message.name}}: {{message.text}}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="friend messages">
+                        <div class="message">
+                            {{message.name}}: {{message.text}}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+            {% if other_id %}
+                <form action="/chat_send/{{ other_id }}/" method="post">
+            {% else %}
+                <form action="/chat_send/" method="post">
+            {% endif %}
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="msg"></label>
+                <input class="form-control" type="text" id="msg" name="msg" placeholder="Enter Message"> <br> 
+                <button type="submit" value="Submit" class="btn btn-primary btn-lg">Send</button>
+            </div>
+            
+            </form>
+        {% else %}
+            <h5 style="color:white">You have already linked GroupMe and can chat with friends through the Friends tab.</h4>
+        {% endif %}
+    {% endif %}
+    
+{% else %}
+    <a href="https://oauth.groupme.com/oauth/authorize?client_id={{ client_id }}">
+        Log in with GroupMe to chat.</a>
+{% endif %}
+
+{% endblock content %}
+

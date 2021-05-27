@@ -1,0 +1,29 @@
+.selectdatewidget {
+    display: inline-block;
+}
+
+select[name$="_day"].selectdatewidget {
+    width: 27%;
+    color: red;
+}
+select[name$="_month"].selectdatewidget {
+    width: 38%;
+    color: green;
+}
+select[name$="_year"].selectdatewidget {
+    width: 35%;
+}
+
+.p1 {
+  font-family: "Cursive", Brush Script MT, serif;
+  font-size: 2em;
+  color:grey;
+}
+
+.p2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+}

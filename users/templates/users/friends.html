@@ -1,0 +1,85 @@
+{% extends "roommate_app/base.html" %}
+
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% if user.is_authenticated %}
+
+{% block content %}
+    
+    {% if not all_friends %}
+    <h4 style="color:white">You have no roommates</h4>
+    {% else %}
+        {% for each_friend in all_friends %}
+
+        {% if each_friend.name != "Simon The Bot"%}
+        <div class="content-section">
+            <div class="media">
+              <img class="rounded-circle account-img" src="{{ each_friend.image.url }}">
+
+              <div class="media-body">
+                <div style="background-color:#183a5c;">
+                <h2 class="account-heading" style="color:white;">&ensp;{{ each_friend.name }}</h2>
+                <p style="color:white;">&ensp;&ensp;&ensp;{{ each_friend.email }}</p>
+
+         
+                <hr>
+             </div>
+                <h5> {{ each_friend.bio }}</h5>
+                <h5> Graduation Year: {{ each_friend.graduation_year }}</h5>
+                <h5> Gender: {{ each_friend.gender }}</h5>
+                <h5> Noise Level: {{ each_friend.noise_level }}</h5>
+                <h5> Budget: ${{ each_friend.budget }}</h5>
+                <h5> Location: {{ each_friend.location }}</h5>
+                <h5> {{ each_friend.my_car_status }}</h5>
+                {% if each_friend.chat_id %}
+                <form action="/chat/{{ each_friend.user.id }}">
+                    <div class="form-group">
+                      <button class="btn btn-outline-info" type="submit">Chat!</button>
+                    </div>
+                </form>
+                {% endif %}
+
+        {% else %}
+                
+                    <div class="content-section">
+                <div class="media">
+                  <img class="rounded-circle account-img" src="{{ each_friend.image.url }}">
+
+                  <div class="media-body">
+                    <div style="background-color:#7a1d18;">
+                    <h2 class="account-heading" style="color:white;">&ensp;{{ each_friend.name }}</h2>
+                    <p style="color:white;">&ensp;&ensp;&ensp;{{ each_friend.email }}</p>
+
+             
+                    <hr>
+                 </div>
+                    <h5> {{ each_friend.bio }}</h5>
+                    <h5> Graduation Year: {{ each_friend.graduation_year }}</h5>
+                    <h5> Gender: {{ each_friend.gender }}</h5>
+                    <h5> Noise Level: {{ each_friend.noise_level }}</h5>
+                    <h5> Budget: ${{ each_friend.budget }}</h5>
+                    <h5> Location: {{ each_friend.location }}</h5>
+                    <h5> {{ each_friend.my_car_status }}</h5>
+                    {% if each_friend.chat_id %}
+                    <form action="/chat/{{ each_friend.user.id }}">
+                        <div class="form-group">
+                          <button class="btn btn-outline-info" type="submit">Chat!</button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+                    <center>
+                        <h5>Click here to join GroupMe and Join the server groupchat!</h5>
+                        <a href='/chat' class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Chat with server</a>
+                    </center>
+        {% endif %} 
+      
+              </div>
+            </div>
+          </div>           
+        {% endfor %}
+    {% endif %}
+
+{% endblock content %}
+
+{% endif %}

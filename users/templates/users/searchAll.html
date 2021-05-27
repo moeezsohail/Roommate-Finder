@@ -1,0 +1,58 @@
+{% extends "roommate_app/base.html" %}
+
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% for each_profile in all_profiles %}    
+    <!-- <h5> {{each_profile.first_name}}<a href="/view_profile/{{each_profile.user.id}}/"> See Profile </a></h5>  -->
+
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ each_profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ each_profile.name }}</h2>
+          <!-- <p class="text-secondary">{{ each_profile.email }}</p> -->
+
+          <!-- <h5> {{ each_profile.bio }}</h5> -->
+          <h5> Graduation Year: {{ each_profile.graduation_year }}</h5>
+          <a href="/send_roommate_request/{{each_profile.user.id}}/" class="btn btn-dark btn-lg " role="button" aria-pressed="true">Send Friend Request</a>
+          <!-- <h5> Gender: {{ each_profile.gender }}</h5> -->
+          <!-- <h5> Noise Level: {{ each_profile.noise_level }}</h5>
+          <h5> Budget: ${{ each_profile.budget }}</h5>
+          <h5> Location: {{ each_profile.location }}</h5>
+          <h5> {{ each_profile.my_car_status }}</h5>
+ -->
+
+        </div>
+      </div>
+      <center>
+       
+      </center>
+    </div>
+
+
+    <!-- <div class="pagination">
+    <span class="step-links">
+
+        {% if all_profiles.has_previous %}
+            <a href="?page={{ all_profiles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            &ensp;Profile {{ all_profiles.number }} of {{ all_profiles.paginator.num_pages }}.&ensp;  
+        </span>
+
+        {% if all_profiles.has_next %}
+            <a href="?page={{ all_profiles.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+    </div> -->
+
+{% endfor %}
+
+
+{% endblock content %}
+

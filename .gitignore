@@ -1,0 +1,12 @@
+# Text backup files
+*.bak
+
+# Database
+*.sqlite3
+
+# Pycharm
+/.idea/.env
+
+/env
+
+*__pycache__

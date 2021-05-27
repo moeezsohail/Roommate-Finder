@@ -1,0 +1,10 @@
+Django
+gunicorn
+django-bootstrap4
+django-allauth
+whitenoise
+django-crispy-forms
+Pillow
+django-storages
+boto3
+GroupyAPI

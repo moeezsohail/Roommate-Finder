@@ -1,0 +1,20 @@
+{% extends "roommate_app/base.html" %}
+
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% if user.is_authenticated %}
+
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ profile.name }}</h2>
+          <!-- <p class="text-secondary">{{ profile.email }}</p> -->
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% endif %}
